@@ -38,9 +38,9 @@ session_start();
 
     <p>Additional Settings:</p>
     <label type="" name="items" value="custom" required> Number of Items: 
-    <input type="number" name="noofitems" placeholder="5" min="1"><br>
+    <input type="number" name="noofitems" placeholder="Enter a number" min="1"><br>
     <label type="" name="items" value="custom" required> Max Difference of choices from the correct answer:
-    <input type="number" name="maxdiff" placeholder="10" min="1"><br><br>
+    <input type="number" name="maxdiff" placeholder="Enter a number" min="1"><br><br>
 
     <button type="settings">Start Quiz</button>
 </form>
