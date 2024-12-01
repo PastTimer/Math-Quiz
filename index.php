@@ -42,7 +42,7 @@ session_start();
     <label type="" name="items" value="custom" required> Max Difference of choices from the correct answer:
     <input type="number" name="maxdiff" placeholder="10" min="1"><br><br>
 
-    <button type="submit">Start Quiz</button>
+    <button type="settings">Start Quiz</button>
 </form>
 </body>
 </html>

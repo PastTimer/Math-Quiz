@@ -24,6 +24,22 @@ p    {color: red;}
 <body>
 <?php
 session_start();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $operator = $_POST['operator'];
+    $difficulty = $_POST['difficulty'];
+    if ($difficulty == 'custom') {
+        $min = $_POST['custom_min'];
+        $max = $_POST['custom_max'];
+    } else {
+        $min = 1;
+        $max = $difficulty;
+    }
+}
+
+$number1 = rand($min, $max);
+$number2 = rand($min, $max);
+
 ?>
 
 <div class = "box1">
@@ -37,7 +53,7 @@ session_start();
     <div style="margin-right:220px;">
         <h1>Math Quiz</h1>
         <form method="post" action="quiz.php">
-            <p>Question: </p>
+            <p><?php echo "$number1 $number2" ?> </p>
             <input type="radio" name="ans" value="" required> A.<br>
             <input type="radio" name="ans" value="" required> B.<br>
             <input type="radio" name="ans" value="" required> C.<br>
