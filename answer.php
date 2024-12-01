@@ -50,7 +50,7 @@ p    {color: red;}
 <?php 
 if ($_SESSION['current_item'] > $_SESSION['noofitems']) {
     echo "<h2>Quiz Over</h2>";
-    echo "<p>Your score: " . $_SESSION['correct_count'] . " out of " . $_SESSION['noofitems'] . "</p>";
+    echo "<p>Your score: " . $_SESSION['correct_count'] . " out of " . $_SESSION['noofitems'] . ". With ". $_SESSION['wrong_count']. " wrong answers. </p>";
     echo "<a href= index.php>Start Again</a>";
     session_destroy(); 
 } else {

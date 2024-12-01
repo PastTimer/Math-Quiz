@@ -41,7 +41,7 @@ if (!isset($_SESSION['noofitems'])) {
 $operator = isset($_SESSION['operator']) ? $_SESSION['operator'] : '+';
 $difficulty = isset($_SESSION['difficulty']) ? $_SESSION['difficulty'] : 10;
 $min = isset($_SESSION['min']) ? $_SESSION['min'] : 1;
-$max = isset($_SESSION['max']) ? $_SESSION['max'] : 10;
+$max = isset($_SESSION['max']) ? $_SESSION['max'] : 100;
 $maxdiff = isset($_SESSION['maxdiff']) ? $_SESSION['maxdiff'] : 5;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -53,9 +53,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($_POST['difficulty'] == 'custom') {
         $_SESSION['min'] = $_POST['custom_min'];
         $_SESSION['max'] = $_POST['custom_max'];
+    } else if ($_POST['difficulty'] == '100'){
+        $_SESSION['min'] = 11;
+        $_SESSION['max'] = $_POST['difficulty'];
     } else {
         $_SESSION['min'] = 1;
-        $_SESSION['max'] = $_POST['difficulty'];}
+        $_SESSION['max'] = $_POST['difficulty'];
+    }
 }
 
 $number1 = rand($min, $max);

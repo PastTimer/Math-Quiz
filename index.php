@@ -22,8 +22,8 @@ p    {color: red;}
 <?php
 session_start();
 ?>
-
 <form method="post" action="quiz.php" class="box1">
+    <h1>Customize Your Quiz</h1>
     <p>Select Operator:</p>
     <input type="radio" name="operator" value="+" required> Addition (+)<br>
     <input type="radio" name="operator" value="-" required> Subtraction (-)<br>
@@ -31,7 +31,7 @@ session_start();
 
     <p>Select Difficulty:</p>
     <input type="radio" name="difficulty" value="10" required> Easy (1-10)<br>
-    <input type="radio" name="difficulty" value="100" required> Medium (1-100)<br>
+    <input type="radio" name="difficulty" value="100" required> Medium (11-100)<br>
     <input type="radio" name="difficulty" value="custom" required> Hard (Custom): 
     <input type="number" name="custom_min" placeholder="Min Value" min="1">
     <input type="number" name="custom_max" placeholder="Max Value" min="1"><br><br>
