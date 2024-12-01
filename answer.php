@@ -51,7 +51,7 @@ p    {color: red;}
 if ($_SESSION['current_item'] > $_SESSION['noofitems']) {
     echo "<h2>Quiz Over</h2>";
     echo "<p>Your score: " . $_SESSION['correct_count'] . " out of " . $_SESSION['noofitems'] . "</p>";
-    <a href= index.php>Start Again</a>
+    echo "<a href= index.php>Start Again</a>";
     session_destroy(); 
 } else {
     header("Location: quiz.php");
