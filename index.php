@@ -25,9 +25,9 @@ session_start();
 
 <form method="post" action="quiz.php" class="box1">
     <p>Select Operator:</p>
-    <input type="radio" name="operator" value="Addition" required> Addition (+)<br>
-    <input type="radio" name="operator" value="Subtraction" required> Subtraction (-)<br>
-    <input type="radio" name="operator" value="Multiplication" required> Multiplication (×)<br>
+    <input type="radio" name="operator" value="+" required> Addition (+)<br>
+    <input type="radio" name="operator" value="-" required> Subtraction (-)<br>
+    <input type="radio" name="operator" value="x" required> Multiplication (×)<br>
 
     <p>Select Difficulty:</p>
     <input type="radio" name="difficulty" value="10" required> Easy (1-10)<br>
