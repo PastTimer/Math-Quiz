@@ -37,10 +37,10 @@ session_start();
     <input type="number" name="custom_max" placeholder="Max Value" min="1"><br><br>
 
     <p>Additional Settings:</p>
-    <label type="" name="items" value="custom" required> Number of Items: 
-    <input type="number" name="noofitems" placeholder="Enter a number" min="1"><br>
-    <label type="" name="items" value="custom" required> Max Difference of choices from the correct answer:
-    <input type="number" name="maxdiff" placeholder="Enter a number" min="1"><br><br>
+    <label type="" name="items" value="custom"> Number of Items: 
+    <input type="number" name="noofitems" placeholder="Enter a number" min="1" required><br>
+    <label type="" name="items" value="custom"> Max Difference of choices from the correct answer:
+    <input type="number" name="maxdiff" placeholder="Enter a number" min="1" required><br><br>
 
     <button type="settings">Start Quiz</button>
 </form>

@@ -28,6 +28,25 @@ form{color: black;
 <body>
 <?php
 session_start();
+if (!isset($_SESSION['correct_count'])) {
+    $_SESSION['correct_count'] = 0;
+}
+if (!isset($_SESSION['wrong_count'])) {
+    $_SESSION['wrong_count'] = 0;
+}
+if (!isset($_SESSION['current_item'])) {
+    $_SESSION['current_item'] = 1;
+}
+if (!isset($_SESSION['noofitems'])) {
+    $_SESSION['noofitems'] = 5; 
+}
+$noofitems = $_SESSION['noofitems']; 
+
+$min = 1;
+$max = 10;
+$operator = '+';
+$correct_answer = 0;
+$maxdiff = 5;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $operator = $_POST['operator'];
@@ -64,13 +83,13 @@ while (count($options) < 4) {
     if (!in_array($random_option, $options)) {
         $options[] = $random_option;} }
 shuffle($options);
+
+$_SESSION['correct_answer'] = $correct_answer;
+$_SESSION['noofitems'] = $noofitems;
 ?>
 
 <div class = "box1">
     <div>
-        <h2>Score</h2>
-        <h4>Correct: </h4>
-        <h4>Wrong: </h4>
         <a href= index.php>Start Again</a><br><br>
         <a href=index.php>Close Quiz</a>
     </div>
