@@ -32,6 +32,9 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $operator = $_POST['operator'];
     $difficulty = $_POST['difficulty'];
+    $noofitems = $_POST['noofitems'];
+    $maxdiff = $_POST['maxdiff'];
+
     if ($difficulty == 'custom') {
         $min = $_POST['custom_min'];
         $max = $_POST['custom_max'];
@@ -44,6 +47,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $number1 = rand($min, $max);
 $number2 = rand($min, $max);
 
+switch ($operator) {
+    case '+':
+        $correct_answer = $number1 + $number2;
+        break;
+    case '-':
+        $correct_answer = $number1 - $number2;
+        break;
+    case 'x':
+        $correct_answer = $number1 * $number2;
+        break;}
+
+$options = [$correct_answer];
+while (count($options) < 4) {
+    $random_option = $correct_answer + rand(-$maxdiff, $maxdiff);
+    if (!in_array($random_option, $options)) {
+        $options[] = $random_option;} }
+shuffle($options);
 ?>
 
 <div class = "box1">
@@ -56,12 +76,12 @@ $number2 = rand($min, $max);
     </div>
     <div style="margin-right:220px;">
         <h1>Math Quiz</h1>
-        <form method="post" action="quiz.php">
+        <form method="post" action="answer.php">
             <p><?php echo "$number1 $operator $number2 = ?" ?></p>
-            <input type="radio" name="ans" value="" required> A. <br>
-            <input type="radio" name="ans" value="" required> B. <br>
-            <input type="radio" name="ans" value="" required> C. <br>
-            <input type="radio" name="ans" value="" required> D. <br><br>
+            <input type="radio" name="ans" value="<?php echo $options[0]?>" required> A. <?php echo $options[0]?><br>
+            <input type="radio" name="ans" value="<?php echo $options[1]?>" required> B. <?php echo $options[1]?><br>
+            <input type="radio" name="ans" value="<?php echo $options[2]?>" required> C. <?php echo $options[2]?><br>
+            <input type="radio" name="ans" value="<?php echo $options[3]?>" required> D. <?php echo $options[3]?><br><br>
 
             <button type="submit">Submit</button>
         </form>
