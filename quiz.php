@@ -28,39 +28,34 @@ form{color: black;
 <body>
 <?php
 session_start();
-if (!isset($_SESSION['correct_count'])) {
-    $_SESSION['correct_count'] = 0;
-}
-if (!isset($_SESSION['wrong_count'])) {
-    $_SESSION['wrong_count'] = 0;
-}
-if (!isset($_SESSION['current_item'])) {
-    $_SESSION['current_item'] = 1;
-}
-if (!isset($_SESSION['noofitems'])) {
-    $_SESSION['noofitems'] = 5; 
-}
-$noofitems = $_SESSION['noofitems']; 
 
-$min = 1;
-$max = 10;
-$operator = '+';
-$correct_answer = 0;
-$maxdiff = 5;
+if (!isset($_SESSION['correct_count'])) {
+    $_SESSION['correct_count'] = 0;}
+if (!isset($_SESSION['wrong_count'])) {
+    $_SESSION['wrong_count'] = 0;}
+if (!isset($_SESSION['current_item'])) {
+    $_SESSION['current_item'] = 1;}
+if (!isset($_SESSION['noofitems'])) {
+    $_SESSION['noofitems'] = 5;}
+
+$operator = isset($_SESSION['operator']) ? $_SESSION['operator'] : '+';
+$difficulty = isset($_SESSION['difficulty']) ? $_SESSION['difficulty'] : 10;
+$min = isset($_SESSION['min']) ? $_SESSION['min'] : 1;
+$max = isset($_SESSION['max']) ? $_SESSION['max'] : 10;
+$maxdiff = isset($_SESSION['maxdiff']) ? $_SESSION['maxdiff'] : 5;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $operator = $_POST['operator'];
-    $difficulty = $_POST['difficulty'];
-    $noofitems = $_POST['noofitems'];
-    $maxdiff = $_POST['maxdiff'];
+    $_SESSION['operator'] = $_POST['operator'];
+    $_SESSION['difficulty'] = $_POST['difficulty'];
+    $_SESSION['noofitems'] = $_POST['noofitems'];
+    $_SESSION['maxdiff'] = $_POST['maxdiff'];
 
-    if ($difficulty == 'custom') {
-        $min = $_POST['custom_min'];
-        $max = $_POST['custom_max'];
+    if ($_POST['difficulty'] == 'custom') {
+        $_SESSION['min'] = $_POST['custom_min'];
+        $_SESSION['max'] = $_POST['custom_max'];
     } else {
-        $min = 1;
-        $max = $difficulty;
-    }
+        $_SESSION['min'] = 1;
+        $_SESSION['max'] = $_POST['difficulty'];}
 }
 
 $number1 = rand($min, $max);
@@ -81,11 +76,11 @@ $options = [$correct_answer];
 while (count($options) < 4) {
     $random_option = $correct_answer + rand(-$maxdiff, $maxdiff);
     if (!in_array($random_option, $options)) {
-        $options[] = $random_option;} }
+        $options[] = $random_option;}
+}
 shuffle($options);
 
 $_SESSION['correct_answer'] = $correct_answer;
-$_SESSION['noofitems'] = $noofitems;
 ?>
 
 <div class = "box1">
